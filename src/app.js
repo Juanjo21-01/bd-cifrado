@@ -8,6 +8,10 @@ const app = express();
 // configuracion
 app.set('port', config.port);
 
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Ruta principal
 app.use(rutacliente);
 

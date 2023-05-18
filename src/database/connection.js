@@ -1,12 +1,14 @@
 // Importar modulo SQL SERVER
 import sql from 'mssql';
-
+import config from '../config.js';
 // Conexion con la base de datos
 const conexionBD = {
-  user: 'juanjo',
-  password: 'basesdedatos',
-  server: 'localhost',
-  database: 'bd_clientes',
+  // user: 'juanjo',
+  // password: 'basesdedatos',
+  user: config.dbUser,
+  password: config.dbPassword,
+  server: config.dbServer,
+  database: config.dbDatabase,
   options: { encrypt: true, trustServerCertificate: true },
 };
 
@@ -20,5 +22,7 @@ export const getConnection = async () => {
     console.error(err);
   }
 };
+
+export { sql };
 
 getConnection();
