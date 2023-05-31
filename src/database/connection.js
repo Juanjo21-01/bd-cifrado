@@ -3,8 +3,6 @@ import sql from 'mssql';
 import config from '../config.js';
 // Conexion con la base de datos
 const conexionBD = {
-  // user: 'juanjo',
-  // password: 'basesdedatos',
   user: config.dbUser,
   password: config.dbPassword,
   server: config.dbServer,
