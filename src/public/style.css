@@ -1,0 +1,482 @@
+/* Resetear las cajas */
+
+html {
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+/* Maquetacion de los elementos */
+
+body {
+    /* minima altura */
+    min-height: 100vh;
+
+    /* resetear margenes */
+    margin: 0;
+
+    /* mostrar en grilla */
+    display: grid;
+
+    /* GRID DE 1c X 4r */
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+
+    /* Area de la grid */
+    grid-template-areas:
+        'header'
+        'main'
+        'main'
+        'main';
+    /* color de fondo */
+    background-color: #8e9eab;
+    background-image: linear-gradient(to bottom, #8e9eab, #eef2f3);
+}
+
+/* estilos al header */
+.header {
+    grid-area: header;
+
+    /* mostrar flexible */
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+    /* color de fondo */
+    color: #bc4749;
+    font-size: 1.25rem;
+}
+
+/* estilos al contenido */
+.main {
+    grid-area: main;
+
+    /* mostrar flexible */
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    /* relleno */
+    padding: 0rem 2rem 2rem 2rem;
+    color: #1b263b;
+
+    width: 100%;
+}
+
+
+
+.btn {
+    /* posicion */
+    position: relative;
+
+    /* borde */
+    border: none;
+    /* borde redondo */
+    border-radius: 0.25rem;
+
+    /* relleno */
+    padding: 0.2rem;
+
+    /* ancho y alto */
+    width: 15rem;
+    height: 2.5rem;
+
+    /* tamanio de fuente */
+    font-size: 1.25rem;
+    /* estilo de fuente */
+    font-weight: bold;
+
+    /* cursor */
+    cursor: pointer;
+
+    /*  */
+    overflow: hidden;
+
+    /* sombra */
+    box-shadow: 0.25rem 0.25rem 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+
+.anim-bottom::after {
+
+    /* contenido */
+    content: "";
+
+    /* posicion */
+    position: absolute;
+    bottom: 0;
+
+    /* ancho y alto */
+    width: 0;
+    height: 0.25rem;
+
+    /* color de fondo */
+    background-color: rebeccapurple;
+
+    /* transicion */
+    transition: width 0.5s ease, left 0.5s ease, right 0.5s ease;
+}
+
+.anim-bottom:hover::after {
+    width: 100%;
+}
+
+.to-center::after {
+    left: 50%;
+}
+
+.to-center:hover::after {
+    left: 0;
+}
+
+/* estilos a la tablas con el contenido */
+.contenido {
+    text-align: center;
+    /* sombra */
+    box-shadow: 0.25rem 0.25rem 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
+
+    /* ancho y alto */
+    width: 100%;
+    height: auto;
+
+}
+
+#desencriptado {
+    display: none;
+}
+
+/* tabla */
+.tabla {
+    border-collapse: collapse;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    /* ancho */
+    width: 100%;
+}
+
+td,
+th {
+    border: thin solid black;
+    padding: 0.75rem;
+}
+
+td {
+    white-space: normal;
+    word-break: break-all;
+}
+
+thead {
+    background-color: #1b263b;
+    color: #eef2f3;
+    font-size: 1.25rem;
+}
+
+tbody {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+
+    width: 100%;
+}
+
+.col {
+    flex: 0 1 auto;
+}
+
+.col:nth-child(1) {
+    width: 3%;
+}
+
+.col:nth-child(2) {
+    width: 16.16666667%;
+}
+
+.col:nth-child(3) {
+    width: 16.16666667%;
+}
+
+.col:nth-child(4) {
+    width: 16.16666667%;
+}
+
+.col:nth-child(5) {
+    width: 16.16666667%;
+}
+
+.col:nth-child(6) {
+    width: 16.16666667%;
+}
+
+.col:nth-child(7) {
+    width: 16.16666667%;
+}
+
+
+.datos {
+    width: inherit;
+}
+
+/* -------------------------------- MOSTRAR LA VENTANA MODAL*/
+
+/* estilos al boton de agregar cliente*/
+.modal {
+    text-align: center;
+    margin: 1rem 3rem;
+    padding: 1rem;
+}
+
+.ventana {
+
+    /* mostrar oculta */
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    /* posicion */
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    /* profundidad z-index */
+    z-index: 997;
+
+
+    /* color de fondo */
+    background-color: #0008;
+
+    /* transicion */
+    transition: opacity 500ms ease-in-out;
+}
+
+/* cerrar la ventana */
+.cerrar-modal {
+
+    /* posicion */
+    position: absolute;
+    top: 13%;
+    right: 17%;
+
+    /* profundidad z-index */
+    z-index: 998;
+    /* ancho y alto */
+    width: 3rem;
+    height: 3rem;
+
+    /* borde redondo */
+    border-radius: 50%;
+
+    /* letra */
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    line-height: 3rem;
+    color: #fff;
+
+    /* color de fondo */
+    background-color: #d00;
+
+    /* transiciones */
+    transition: background-color 300ms linear, transform 300ms ease-in-out;
+
+    cursor: pointer;
+}
+
+.cerrar-modal:hover {
+    background-color: #006999;
+    transform: scale(1.2);
+}
+
+/* cambiar el borde del modal al seleccionar el boton para cerrarlo */
+.cerrar-modal:hover~.contenido-modal {
+    border: thick double #006999;
+}
+
+.contenido-modal {
+
+    position: relative;
+
+    /* borde del contenedor */
+    border: thick double #d00;
+
+    /* borde redondo */
+    border-radius: 1rem;
+
+    /* relleno */
+    padding: 0 2rem;
+
+    /* ancho y alto */
+    width: 70%;
+    height: 80vh;
+
+    /* mostrar flexible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+
+    overflow: auto;
+
+
+    /* color de fondo */
+    background-color: #ddd;
+}
+
+
+.contenido-modal h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #006999;
+}
+
+
+/* modal de eliminar cliente */
+.contenido-modal h4 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #006999;
+}
+
+.contenido-modal div {
+    text-align: center;
+}
+
+.contenido-modal button {
+    width: 80px;
+    height: 80px;
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    color: #ddd;
+    background-color: #006999;
+
+    /* transiciones */
+    transition: background-color 300ms linear, transform 300ms ease-in-out;
+}
+
+.contenido-modal button:hover {
+    background-color: #4caf50;
+    transform: scale(1.2);
+}
+
+.contenido-modal button:first-child:hover {
+    background-color: #bc4749;
+}
+
+/* -------------------------------- FORMULARIO DE AGREGAR CLIENTE  */
+
+.contact-form {
+    /* variables para colores */
+    --form-text-color: #666;
+    --form-placeholder-color: #006999;
+    --form-success-color: #4caf50;
+    --form-error-color: #f44336;
+    --form-bg-color: #eee;
+    --form-border-color: #222;
+
+    /* color de fondo */
+    background-color: var(--form-bg-color);
+
+    /* borde */
+    border: thin solid var(--form-border-color);
+
+    /* margenes */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+
+    /* relleno */
+    padding: 1rem 2rem;
+
+    /* ancho */
+    width: 80%;
+}
+
+/* elementos del formulario */
+.contact-form>* {
+    /* mostrar */
+    display: block;
+
+    /* ancho */
+    width: 80%;
+
+    /* margen */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+
+    /*relleno  */
+    padding: 0.5rem;
+
+    /* fuente */
+    font-family: inherit;
+
+    /* tamanio */
+    font-size: 1rem;
+
+    /* borde redondo */
+    border-radius: 0.5rem;
+
+    /* color */
+    color: var(--form-text-color);
+    /* linea del cursor */
+    caret-color: var(--form-placeholder-color);
+}
+
+/* color al placeholder de los inputs */
+.contact-form>*::placeholder {
+    color: var(--form-placeholder-color);
+}
+
+/* -> cuando estan invalidados los inputs */
+.contact-form>*[required]:invalid {
+    border: thin solid var(--form-error-color);
+}
+
+/* -> cuando estan validados los inputs */
+.contact-form>*[required]:valid {
+    border: thin solid var(--form-success-color);
+}
+
+/* estilo al boton */
+.contact-form input[type="submit"] {
+    /* margenes */
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* ancho */
+    width: 30%;
+
+    /* color de fondo */
+    background-color: var(--form-placeholder-color);
+
+    /* negrita */
+    font-weight: bold;
+    /* tamanio de fuente */
+    font-size: 1.25rem;
+    /* color */
+    color: #fff;
+}
+
+.contact-form input[type="submit"]:hover {
+    cursor: pointer;
+    opacity: 0.75;
+}

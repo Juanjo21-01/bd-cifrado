@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bases de Datos II</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <h1>Bases de datos II</h1>
+      <h2>Enviar Datos Cifrados de Clientes</h2>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- DATOS ENCRIPTADOS -->
+      <section class="datos">
+        <article class="modal">
+          <!-- boton para agregar cliente -->
+          <button id="agregar-cliente" class="btn anim-bottom to-center">
+            Agregar Cliente
+          </button>
+
+          <!-- ventana modal para agregar cliente -->
+          <div id="mi-modal" class="ventana">
+            <a id="cerrar-modal" class="cerrar-modal">X</a>
+
+            <div class="contenido-modal">
+              <h2>Agregar Nuevo Cliente</h2>
+              <form class="contact-form" action="/clientes" method="POST">
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre del Cliente"
+                  pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+                  title="Nombre sólo acepta letras y espacios en blanco"
+                  required
+                />
+                <input
+                  type="text"
+                  name="apellido"
+                  placeholder="Apellido del Cliente"
+                  pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+                  title="Apellido sólo acepta letras y espacios en blanco"
+                  required
+                />
+                <input
+                  type="text"
+                  name="dpi"
+                  placeholder="DPI del Cliente"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Escribe tu correo"
+                  pattern="^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$"
+                  title="Formato de correo inválido"
+                  required
+                />
+                <input
+                  type="text"
+                  name="direccion"
+                  placeholder="Dirección del Cliente"
+                  required
+                />
+                <input
+                  type="text"
+                  name="telefono"
+                  placeholder="Teléfono del Cliente"
+                  required
+                />
+
+                <input type="submit" value="Insertar" />
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <article class="contenido">
+          <!-- tabla con la informacion de los cliente -->
+          <table class="tabla">
+            <thead>
+              <tr class="row">
+                <th class="col">ID</th>
+                <th class="col">Nombre</th>
+                <th class="col">Apellido</th>
+                <th class="col">DPI</th>
+                <th class="col">Email</th>
+                <th class="col">Direccion</th>
+                <th class="col">Telefono</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+      </section>
+
+      <!-- DATOS DESENCRIPTADOS -->
+      <section class="datos">
+        <article class="modal">
+          <!-- boton para mostrar datos desencriptados -->
+          <button id="desencriptar" class="btn anim-bottom to-center">
+            Desencriptar
+          </button>
+        </article>
+        <article class="contenido" id="desencriptado">
+          <!-- tabla con la informacion de los clientes -->
+          <table class="tabla" id="datos-desencriptados">
+            <thead>
+              <tr class="row">
+                <th class="col">ID</th>
+                <th class="col">Nombre</th>
+                <th class="col">Apellido</th>
+                <th class="col">DPI</th>
+                <th class="col">Email</th>
+                <th class="col">Direccion</th>
+                <th class="col">Telefono</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+      </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="index.js"></script>
+  </body>
+</html>
